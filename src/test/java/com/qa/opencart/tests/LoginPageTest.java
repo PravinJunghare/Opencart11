@@ -3,8 +3,8 @@ package com.qa.opencart.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
 import com.qa.opencart.base.BaseTest;
+import com.qa.opencart.pages.AccountsPage;
 
 public class LoginPageTest extends BaseTest {
 
@@ -27,9 +27,10 @@ public class LoginPageTest extends BaseTest {
 		Assert.assertTrue(loginPage.isForgotpwdLinkExits());
 	}
 
-	@Test(priority=Short.MAX_VALUE)
+	@Test(priority = Short.MAX_VALUE)
 	public void loginTest() throws InterruptedException {
-		String actAccpageTitle = loginPage.doLogin("nov11@gmail.com", "1234");
+		// String actAccpageTitle = loginPage.doLogin("nov11@gmail.com", "1234");
+		AccountsPage actAccpageTitle = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 		Assert.assertEquals(actAccpageTitle, "My Account");
 
 	}
