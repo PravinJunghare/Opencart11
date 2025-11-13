@@ -50,8 +50,7 @@ public class AccountsPageTest extends BaseTest {
 	@Test
 	public void accountHeaderValueTest() {
 		List<String> actualAccHeaderList = accountsPage.getAccountPageHeadersList();
-		System.out.println("Actual AccPage header list" + actualAccHeaderList);
-		System.out.println("Expected AccPage header list " + EXPECTED_ACCOUNTPAGE_HEADERS_LIST);
+		//System.out.println("Expected AccPage header list " + EXPECTED_ACCOUNTPAGE_HEADERS_LIST);
 		Assert.assertEquals(actualAccHeaderList, EXPECTED_ACCOUNTPAGE_HEADERS_LIST);
 	}
 

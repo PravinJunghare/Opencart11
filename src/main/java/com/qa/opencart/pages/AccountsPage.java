@@ -66,23 +66,24 @@ public class AccountsPage {
 		// List<WebElement> accHeaderslist = eleUtil.waitForElementsVisible(accHeader,
 		// 10);
 		List<WebElement> accHeaderslist = eleUtil.waitForElementsVisible(accHeader, DEFAULT_MEDIUM_TIMEOUT);
-		List<String> accHeaderValList = new ArrayList<String>();
+		List<String> accHeaderValueList = new ArrayList<String>();
 
 		for (WebElement e : accHeaderslist) {
 			String text = e.getText();
-			accHeaderValList.add(text);
+			accHeaderValueList.add(text);
 		}
-		return accHeaderValList;
+		System.out.println("Actual AccPage header list" +accHeaderValueList);
+		return accHeaderValueList;
 	}
 
-	public SearchPage doSearch(String searchKey) {
+	public SearchResultPage doSearch(String searchKey) {
 		if (isSearchExist())
 
 		{
 			System.out.println("Searchkey:" + searchKey);
 			eleUtil.doSendKeys(search, searchKey);
 			eleUtil.doClick(searchIcon);
-			return new SearchPage(driver);
+			return new SearchResultPage(driver);
 
 		} else {
 			System.out.println("Search Field is not exist on page...");
