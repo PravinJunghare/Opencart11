@@ -30,7 +30,7 @@ public class LoginPage {
 
 		public String getLoginPageTitle() {
 			// String title = driver.getTitle();
-			String title = eleUtil.waitForTitleContainsAndFetch(DEFAULT_SHORT_TIMEOUT,LOGIN_PAGE_TITLE_VALUE);
+			String title = eleUtil.waitForTitleContainsAndFetch(DEFAULT_LONG_TIMEOUT,LOGIN_PAGE_TITLE_VALUE);
 			return title;
 		}
 

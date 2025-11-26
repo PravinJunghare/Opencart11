@@ -18,22 +18,30 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.qa.opencart.factory.Driverfactory;
+
 public class ElementUtil {
 
 	private WebDriver driver;
-	//private JavaScriptUtil jsUtil;
+	private JavaScriptUtil jsUtil;
 
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
-		//jsUtil = new JavaScriptUtil(driver);
+		jsUtil = new JavaScriptUtil(driver);
 	}
 
 	public WebElement getElement(By locator) {
 		WebElement element = driver.findElement(locator);
-		//if (Boolean.parseBoolean(Driverfactory.highlight)) {
-		//	jsUtil.flash(element);
-		//}
+
+		Highlight(element);// to highlight the element if do not want to highlight make false or comment this line
 		return element;
+	}
+
+// Method created for highlight the element
+	private void Highlight(WebElement element) {
+		if (Boolean.parseBoolean(Driverfactory.isHighlight)) {
+			jsUtil.flash(element);
+		}
 	}
 
 	public WebElement getElement(By locator, int timeOut) {
@@ -206,9 +214,7 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		try {
 			return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-		}
-		catch(org.openqa.selenium.TimeoutException  e)
-		{
+		} catch (org.openqa.selenium.TimeoutException e) {
 			return Collections.EMPTY_LIST;
 		}
 	}

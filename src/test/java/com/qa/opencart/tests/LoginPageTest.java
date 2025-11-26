@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
+import com.qa.opencart.constants.AppConstant;
 import com.qa.opencart.pages.AccountsPage;
 
 public class LoginPageTest extends BaseTest {
@@ -11,14 +12,14 @@ public class LoginPageTest extends BaseTest {
 	@Test(priority = 1)
 	public void loginPageTitleTest() {
 		String actTitle = loginPage.getLoginPageTitle();
-		Assert.assertEquals(actTitle, "Account Login");
+		Assert.assertEquals(actTitle, AppConstant.LOGIN_PAGE_TITLE_VALUE);
 
 	}
 
 	@Test(priority = 2)
 	public void loginPageUrlTest() {
 		String actUrl = loginPage.getLoginUrl();
-		Assert.assertTrue(actUrl.contains("route=account/login"));
+		Assert.assertTrue(actUrl.contains(AppConstant.LOGIN_PAGE_URL_FRACTION_VALUE));
 
 	}
 
@@ -30,8 +31,9 @@ public class LoginPageTest extends BaseTest {
 	@Test(priority = Short.MAX_VALUE)
 	public void loginTest() throws InterruptedException {
 		// String actAccpageTitle = loginPage.doLogin("nov11@gmail.com", "1234");
-		AccountsPage actAccpageTitle = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
-		Assert.assertEquals(actAccpageTitle, "My Account");
+		AccountsPage accountsPage= loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		String actAccpageTitle=accountsPage.getAccPageTitle();
+		Assert.assertEquals(actAccpageTitle, AppConstant.ACCOUNTS_PAGE_TITLE_VALUE);
 
 	}
 }

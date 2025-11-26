@@ -14,6 +14,8 @@ import com.qa.opencart.exception.BrowserException;
 public class Driverfactory {
 	public WebDriver driver;
 	public Properties prop;
+	OptionManager optionManger;
+	public static String isHighlight;
 
 	/**
 	 * this method is initializing the browser on the basis of browser name
@@ -26,12 +28,16 @@ public class Driverfactory {
 
 		String browserName = prop.getProperty("browser").trim();
 		System.out.println("browsername is :" + browserName);
+		optionManger = new OptionManager(prop);
+		isHighlight = prop.getProperty("highlight");
+
 		if (browserName.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
+			// driver = new ChromeDrive()
+			driver = new ChromeDriver(optionManger.getChromeOptions());
 		} else if (browserName.trim().equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(optionManger.getFirefoxOptions());
 		} else if (browserName.trim().equalsIgnoreCase("edge")) {
-			driver = new EdgeDriver();
+			driver = new EdgeDriver(optionManger.getEdgeOptions());
 		} else {
 			System.out.println("Please enter the correct browserName" + browserName);
 			throw new BrowserException("===Invalid Browser=====" + browserName);
@@ -39,7 +45,7 @@ public class Driverfactory {
 
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
-		//driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
+		// driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
 		driver.get(prop.getProperty("url"));
 
 		return driver;
