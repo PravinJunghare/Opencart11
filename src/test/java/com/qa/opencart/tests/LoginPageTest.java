@@ -28,8 +28,8 @@ public class LoginPageTest extends BaseTest {
 		Assert.assertTrue(loginPage.isForgotpwdLinkExits());
 	}
 
-	@Test(priority = Short.MAX_VALUE)
-	public void loginTest() throws InterruptedException {
+	@Test(priority = Short.MAX_VALUE,enabled = true)// enable true or false to run particular test
+	public void loginTest()  {
 		// String actAccpageTitle = loginPage.doLogin("nov11@gmail.com", "1234");
 		AccountsPage accountsPage= loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 		String actAccpageTitle=accountsPage.getAccPageTitle();
