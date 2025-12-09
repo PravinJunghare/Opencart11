@@ -14,14 +14,16 @@
 		<aspectj.version>1.9.5</aspectj.version>
 	</properties>
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<!--
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.28.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+		<!--
+		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
@@ -67,14 +69,14 @@
 			<artifactId>openxml4j</artifactId>
 			<version>1.0-beta</version>
 		</dependency>
-		
-	<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
-<dependency>
-    <groupId>com.opencsv</groupId>
-    <artifactId>opencsv</artifactId>
-    <version>5.11.2</version>
-</dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.11.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
@@ -128,14 +130,10 @@
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXmlFile>
-							$
-							<suiteXmlFile></suiteXmlFile>
-						</suiteXmlFile>
-
+							src\test\resources\testRunners\sanity_chrome.xml</suiteXmlFile>
 						<!--for running multiple testng.xml files in jenkins pipeline use above 
 							line -->
 						<!--<suiteXmlFile>src\test\resources\testrunners\test_sanity.xml</suiteXmlFile> -->
-
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

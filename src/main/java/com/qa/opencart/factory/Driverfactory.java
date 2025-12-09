@@ -1,6 +1,7 @@
 package com.qa.opencart.factory;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -10,6 +11,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.qa.opencart.exception.BrowserException;
+import com.qa.opencart.exception.FrameworkException;
 
 public class Driverfactory {
 	public WebDriver driver;
@@ -24,6 +26,7 @@ public class Driverfactory {
 	 * @return this returns the driver
 	 */
 	// public WebDriver initDriver(String browserName)
+
 	public WebDriver initDriver(Properties prop) {
 
 		String browserName = prop.getProperty("browser").trim();
@@ -57,16 +60,45 @@ public class Driverfactory {
 	 * 
 	 * @return
 	 */
+	// mvn clean install -Denv="Qa"
 	public Properties initProp()
 
 	{
-		prop = new Properties();
-		try {
-			FileInputStream ip = new FileInputStream("./src/test/resources/config/config.properties");
-			prop.load(ip);
 
+		String envName = System.getProperty("env");
+		FileInputStream ip = null;
+		prop=new Properties();
+		try {
+			if (envName == null) {
+				System.err.println("env is null ,hence running on QA env");
+				ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
+
+			} else {
+				System.out.println("Running test cases on environment  :" + envName);
+				switch (envName.toLowerCase().trim()) {
+				case "qa":
+					ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
+					break;
+				case "dev":
+					ip = new FileInputStream("./src/test/resources/config/dev.config.properties");
+					break;
+
+				case "uat":
+					ip = new FileInputStream("./src/test/resources/config/uat.config.properties");
+					break;
+
+				default:
+					throw new FrameworkException("==INVALID ENVIRONMENT NAME :"+envName);
+				}
+
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+
+		}
+		try {
+			prop.load(ip);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
