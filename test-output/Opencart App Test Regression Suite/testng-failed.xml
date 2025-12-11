@@ -1,51 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="4" parallel="tests" name="Failed suite [Opencart App Test Regression Suite]" guice-stage="DEVELOPMENT" verbose="4">
+  <listeners>
+    <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>
+  </listeners>
+  <test thread-count="4" parallel="tests" name="Accounts Page Test(failed)" verbose="4">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.qa.opencart.tests.AccountsPageTest">
+        <methods>
+          <include name="accPageSetup"/>
+          <include name="accountsPageTitleTest"/>
+          <include name="setUp"/>
+          <include name="attachScreenshot"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- com.qa.opencart.tests.AccountsPageTest -->
+    </classes>
+  </test> <!-- Accounts Page Test(failed) -->
   <test thread-count="4" parallel="tests" name="Login Page Test_chrome(failed)" verbose="4">
     <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.qa.opencart.tests.LoginPageTest">
         <methods>
           <include name="loginTest"/>
-          <include name="loginPageTitleTest"/>
           <include name="setUp"/>
+          <include name="attachScreenshot"/>
           <include name="teardown"/>
-          <include name="forgotpassLinkExistTest"/>
-          <include name="loginPageUrlTest"/>
         </methods>
       </class> <!-- com.qa.opencart.tests.LoginPageTest -->
     </classes>
   </test> <!-- Login Page Test_chrome(failed) -->
-  <test thread-count="4" parallel="tests" name="Accounts Page Test(failed)" verbose="4">
-    <parameter name="browser" value="firefox"/>
-    <classes>
-      <class name="com.qa.opencart.tests.AccountsPageTest">
-        <methods>
-          <include name="accountHeaderValueTest"/>
-          <include name="accPageSetup"/>
-          <include name="accountHeaderCountTest"/>
-          <include name="accountsPageTitleTest"/>
-          <include name="setUp"/>
-          <include name="accountsPageUrlTest"/>
-          <include name="teardown"/>
-          <include name="isLogoutLinkExistTest"/>
-        </methods>
-      </class> <!-- com.qa.opencart.tests.AccountsPageTest -->
-    </classes>
-  </test> <!-- Accounts Page Test(failed) -->
-  <test thread-count="4" parallel="tests" name="Login Page Test_firefox(failed)" verbose="4">
-    <parameter name="browser" value="firefox"/>
-    <classes>
-      <class name="com.qa.opencart.tests.LoginPageTest">
-        <methods>
-          <include name="loginTest"/>
-          <include name="loginPageTitleTest"/>
-          <include name="setUp"/>
-          <include name="teardown"/>
-          <include name="forgotpassLinkExistTest"/>
-          <include name="loginPageUrlTest"/>
-        </methods>
-      </class> <!-- com.qa.opencart.tests.LoginPageTest -->
-    </classes>
-  </test> <!-- Login Page Test_firefox(failed) -->
 </suite> <!-- Failed suite [Opencart App Test Regression Suite] -->

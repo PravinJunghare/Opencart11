@@ -109,6 +109,14 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.aventstack/chaintest-testng -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>chaintest-testng</artifactId>
+    <version>1.0.12</version>
+</dependency>
+
 	</dependencies>
 
 
