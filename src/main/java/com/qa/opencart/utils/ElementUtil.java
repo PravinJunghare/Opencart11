@@ -20,6 +20,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.opencart.factory.Driverfactory;
 
+import io.qameta.allure.Step;
+
 public class ElementUtil {
 
 	private WebDriver driver;
@@ -30,10 +32,12 @@ public class ElementUtil {
 		jsUtil = new JavaScriptUtil(driver);
 	}
 
+	@Step("Finding locater :{0}")
 	public WebElement getElement(By locator) {
 		WebElement element = driver.findElement(locator);
 
-		Highlight(element);// to highlight the element if do not want to highlight make false or comment this line
+		Highlight(element);// to highlight the element if do not want to highlight make false or comment
+							// this line
 		return element;
 	}
 
@@ -52,6 +56,7 @@ public class ElementUtil {
 		return driver.findElements(locator);
 	}
 
+	@Step("enetring value :{1} into locator{0}")
 	public void doSendKeys(By locator, String value) {
 		WebElement element = getElement(locator);
 		element.clear();

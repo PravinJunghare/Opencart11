@@ -59,7 +59,7 @@ public class BaseTest {
 	@AfterMethod // will be running after each @test method
 	public void attachScreenshot(ITestResult result) {
 		// ******For failed Test Cases Screenshot************
-		
+
 		if (!result.isSuccess()) {// only for failure test cases -- true
 			// log.info("---screenshot is taken---");
 			ChainTestListener.embed(Driverfactory.getScreenshotFile(), "image/png");
