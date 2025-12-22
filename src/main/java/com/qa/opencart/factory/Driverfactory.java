@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +25,7 @@ public class Driverfactory {
 	OptionManager optionManger;
 	public static String isHighlight;
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+	public static final Logger log = LogManager.getLogger(Driverfactory.class);
 
 	/**
 	 * this method is initializing the browser on the basis of browser name
@@ -33,10 +36,12 @@ public class Driverfactory {
 	// public WebDriver initDriver(String browserName)
 
 	public WebDriver initDriver(Properties prop) {
+		log.info("Properties" + prop);
 		ChainTestListener.log("Properties used :" + prop.toString());
 
 		String browserName = prop.getProperty("browser").trim();
-		System.out.println("browsername is :" + browserName);
+		// System.out.println("browsername is :" + browserName);
+		log.info("browser name" + browserName);
 		optionManger = new OptionManager(prop);
 		isHighlight = prop.getProperty("highlight");
 
@@ -55,7 +60,8 @@ public class Driverfactory {
 			tlDriver.set(new EdgeDriver(optionManger.getEdgeOptions()));
 			// driver = new EdgeDriver(optionManger.getEdgeOptions());
 		} else {
-			System.out.println("Please enter the correct browserName" + browserName);
+			// System.out.println("Please enter the correct browserName" + browserName);
+			log.error("Please Pass the vaild browserName" + browserName);
 			throw new BrowserException("===Invalid Browser=====" + browserName);
 		}
 
@@ -96,11 +102,13 @@ public class Driverfactory {
 		prop = new Properties();
 		try {
 			if (envName == null) {
-				System.err.println("env is null ,hence running on QA env");
+				// System.out.println("env is null ,hence running on QA env");
+				log.warn("env is null ,hence running on QA env...");
 				ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
 
 			} else {
 				System.out.println("Running test cases on environment  :" + envName);
+				log.info("Running test cases on environment  : + envName");
 				switch (envName.toLowerCase().trim()) {
 				case "qa":
 					ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
@@ -114,6 +122,7 @@ public class Driverfactory {
 					break;
 
 				default:
+					log.error("---Invalid Environment Name" + envName);
 					throw new FrameworkException("==INVALID ENVIRONMENT NAME :" + envName);
 				}
 

@@ -3,9 +3,11 @@ package com.qa.opencart.base;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -18,6 +20,7 @@ import com.qa.opencart.pages.LoginPage;
 import com.qa.opencart.pages.ProductInfoPage;
 import com.qa.opencart.pages.RegisterPage;
 import com.qa.opencart.pages.SearchResultPage;
+import com.qa.opencart.utils.LogUtil;
 
 //@Listeners(ChainTestListener.class)
 public class BaseTest {
@@ -56,6 +59,11 @@ public class BaseTest {
 		softAssert = new SoftAssert();
 	}
 
+	@BeforeMethod
+	public void beforeMethod(ITestContext result) {
+		LogUtil.info("---Starting Test Case----" + result.getName());
+	}
+
 	@AfterMethod // will be running after each @test method
 	public void attachScreenshot(ITestResult result) {
 		// ******For failed Test Cases Screenshot************
@@ -66,8 +74,9 @@ public class BaseTest {
 		}
 		// For All Test Cases
 		// ChainTestListener.embed(Driverfactory.getScreenshotFile(), "image/png");
+		LogUtil.info("---Ending Test Case----" + result.getName());
 
-	}
+	} 
 
 	@AfterTest
 	public void teardown() {

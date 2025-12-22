@@ -3,27 +3,16 @@
 <suite thread-count="4" parallel="tests" name="Failed suite [Opencart App Test Regression Suite]" guice-stage="DEVELOPMENT" verbose="4">
   <listeners>
     <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>
+    <listener class-name="com.qa.opencart.listeners.TestAllureListener"/>
+    <listener class-name="com.qa.opencart.listeners.AnnotationTransformer"/>
   </listeners>
-  <test thread-count="4" parallel="tests" name="Accounts Page Test(failed)" verbose="4">
-    <parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="com.qa.opencart.tests.AccountsPageTest">
-        <methods>
-          <include name="accPageSetup"/>
-          <include name="accountsPageTitleTest"/>
-          <include name="setUp"/>
-          <include name="attachScreenshot"/>
-          <include name="teardown"/>
-        </methods>
-      </class> <!-- com.qa.opencart.tests.AccountsPageTest -->
-    </classes>
-  </test> <!-- Accounts Page Test(failed) -->
   <test thread-count="4" parallel="tests" name="Login Page Test_chrome(failed)" verbose="4">
     <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.qa.opencart.tests.LoginPageTest">
         <methods>
-          <include name="loginTest"/>
+          <include name="beforeMethod"/>
+          <include name="loginPageTitleTest"/>
           <include name="setUp"/>
           <include name="attachScreenshot"/>
           <include name="teardown"/>
