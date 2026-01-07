@@ -21,19 +21,25 @@
 
 	<test name="Login Page Test_chrome">
 		<parameter name="browser" value="chrome" />
-
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-	
-	<!-- <test name="Accounts Page Test"> <parameter name="browser" value="chrome" 
-		/> <classes> <class name="com.qa.opencart.tests.AccountsPageTest" /> </classes> 
-		</test> -->
 
-	<!-- test name="ProductInfo Page Test"> <classes> <class name="com.qa.opencart.tests.ProductInfoPageTest" 
-		/> </classes> </test> <test name="Registration Page Test"> <classes> <class 
-		name="com.qa.opencart.tests.RegistrationPageTest" /> </classes> </test> ********verbose 
-		means log**************** -->
+	<test name="Accounts Page Test">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.opencart.tests.AccountsPageTest" />
+		</classes>
+	</test>
+
+	<test name="ProductInfo Page Test">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.opencart.tests.ProductInfoPageTest" />
+		</classes>
+	</test>
+
+	<!-- ********verbose means log**************** -->
 
 </suite>
