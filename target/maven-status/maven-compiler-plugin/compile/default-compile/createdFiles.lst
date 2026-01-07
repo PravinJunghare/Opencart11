@@ -1,4 +1,5 @@
 com\qa\opencart\utils\StringUtility.class
+com\qa\opencart\listeners\TestAllureListener.class
 com\qa\opencart\utils\CSVUtil.class
 com\qa\opencart\pages\LoginPage.class
 com\qa\opencart\errors\AppError.class
@@ -7,10 +8,13 @@ com\qa\opencart\utils\ElementUtil.class
 com\qa\opencart\pages\ProductInfoPage.class
 com\qa\opencart\pages\AccountsPage.class
 com\qa\opencart\pages\SearchResultPage.class
+com\qa\opencart\listeners\AnnotationTransformer.class
 com\qa\opencart\pages\RegisterPage.class
 com\qa\opencart\utils\JavaScriptUtil.class
+com\qa\opencart\listeners\Retry.class
 com\qa\opencart\utils\ExcelUtil.class
 com\qa\opencart\factory\Driverfactory.class
 com\qa\opencart\constants\AppConstant.class
 com\qa\opencart\exception\BrowserException.class
 com\qa\opencart\exception\FrameworkException.class
+com\qa\opencart\utils\LogUtil.class
