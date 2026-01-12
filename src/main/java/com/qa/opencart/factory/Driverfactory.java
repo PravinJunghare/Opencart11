@@ -107,7 +107,7 @@ public class Driverfactory {
 				ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
 
 			} else {
-				System.out.println("Running test cases on environment  :" + envName);
+				System.out.println("Running test cases on env  :" + envName);
 				log.info("Running test cases on environment  : + envName");
 				switch (envName.toLowerCase().trim()) {
 				case "qa":
