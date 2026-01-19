@@ -38,9 +38,8 @@ pipeline
         stage("Regression Automation Test") {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/PravinJunghare/Opencart11.git'                                          // git repo url
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testRunners/sanity_chrome.xml -Denv="qa"" // Runner file name and env name
-                    
+                    git 'https://github.com/PravinJunghare/Opencart11.git'                                          
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testRunners/sanity_chrome.xml -Denv="qa"" 
                 }
             }
         }
@@ -83,8 +82,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/PravinJunghare/POMPFJAN2024FINAL.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testRunners/sanity_chrome.xml -Denv="stage""// runner file name and env anme
-                    
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testRunners/sanity_chrome.xml -Denv="stage""
                 }
             }
         }
