@@ -39,7 +39,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/PravinJunghare/Opencart11.git'                                          
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testRunners/sanity_chrome.xml -Denv="qa"" 
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testRunners/sanity_chrome.xml -Denv=\"qa\"" 
                 }
             }
         }
@@ -82,7 +82,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/PravinJunghare/POMPFJAN2024FINAL.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testRunners/sanity_chrome.xml -Denv="stage""
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testRunners/sanity_chrome.xml -Denv=\"stage\""
                 }
             }
         }
